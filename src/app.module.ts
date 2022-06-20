@@ -2,6 +2,12 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { User } from './user/entity/user.entity';
+import { UserModule } from './user/user.module';
+import { CampaignModule } from './campaign/campaign.module';
+import { Campaign } from './campaign/entity/campaign.entity';
+import { Kupon } from './campaign/entity/kupon.entity';
+
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -11,9 +17,9 @@ import { AppService } from './app.service';
     username: 'root',
     password: '',
     database: 'kupon',
-    entities: [],
+    entities: [User,Campaign,Kupon],
     synchronize: true,
-  })],
+  }), UserModule, CampaignModule],
   controllers: [AppController],
   providers: [AppService],
 })
