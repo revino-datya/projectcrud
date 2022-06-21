@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Campaign } from "./campaign.entity";
 
 @Entity()
 export class Kupon{
@@ -6,4 +7,6 @@ export class Kupon{
     id:number;
     @Column()
     name:string;
+    @ManyToOne(() => Campaign)
+    campaign: Campaign;
 }
